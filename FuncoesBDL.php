@@ -15,9 +15,9 @@
  * Esta função faz a conexão com servidor e o banco de dados
  */
 function getConnection() {
-    $usuario = 'root';
-    $senha = '';
-    $host = '127.0.0.1';
+    $usuario = 'bf8b2b282ea278';
+    $senha = 'a067e5bd';
+    $host = 'us-cdbr-iron-east-04.cleardb.net';
     $conn = mysqli_connect($host, $usuario, $senha);
 
     if (!$conn) {
@@ -29,7 +29,7 @@ function getConnection() {
     mysqli_query($conn, 'SET character_set_client=utf8');
     mysqli_query($conn, 'SET character_set_results=utf8');
 
-    $bd = mysqli_select_db($conn, 'bolaooitavas');
+    $bd = mysqli_select_db($conn, 'heroku_7173119489dde05');
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
     }
@@ -392,7 +392,7 @@ function atualizarPontuacao() {
             $timeEscolhido = getColExpecifica("time", "apostadores");
             $campeao = getColExpecifica("nome", "campeaoc");
             if ($campeao[0]["nome"] == $timeEscolhido[$i]["time"]) {
-                $apostadores[$i]["pontos"] = $apostadores[$i]["pontos"] + 100;
+                $apostadores[$i]["pontos"] = $apostadores[$i]["pontos"] + 50;
             }
         }
         setPontuacaoDB($id[$i], $apostadores[$i]["pontos"]);

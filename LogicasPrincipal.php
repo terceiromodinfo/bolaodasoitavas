@@ -82,7 +82,7 @@ if (isset($post['atualizarPontuacao'])) {
     
     atualizarPontuacao();
     unset($post);
-    header("location:homer.php");
+    header("location:index.php");
 }
 
 /*

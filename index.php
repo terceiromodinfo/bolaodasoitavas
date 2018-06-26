@@ -1,6 +1,6 @@
 <?php
 include './FuncoesBDL.php';
-include './mostra_erros.php';
+//include './mostra_erros.php';
 $get = get();
 session_start();
 if (!(isset($_SESSION['login']) && isset($_SESSION['senha']))) {
@@ -122,6 +122,14 @@ and open the template in the editor.
                                  */
                                 $apostadores = getOrdenaUsuarioPorPontos();
                                 $posicao = 1;
+                                /*
+                                for ($a = 0; $a < getQuantLinhasTabela("apostadores"); $a++) {                                    
+                                    if ($apostadores[$a]['pontos'] == $apostadores[$a-1]['pontos']) {
+                                        
+                                    }
+                                }
+                                 * 
+                                 */
                                 for ($i = 0; $i < getQuantLinhasTabela("apostadores"); $i++) {
                                     $_SESSION['id'] = $apostadores[$i]['id'];
                                     print "";
