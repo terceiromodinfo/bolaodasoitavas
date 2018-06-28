@@ -125,6 +125,40 @@ $pizza = "piece1|piece2|piece3|piece4|piece5|piece6";
 
     return $conn;
 } 
+ * 
+ * function getConnection() {
+    $usuario = 'bf8b2b282ea278';
+    $senha = 'a067e5bd';
+    $host = 'us-cdbr-iron-east-04.cleardb.net';
+    $conn = mysqli_connect($host, $usuario, $senha);
+
+    if (!$conn) {
+        die("NÃ£o foi possÃ­vel conectar" . mysqli_error());
+    }
+
+    mysqli_query($conn, "SET NAMES 'utf8'");
+    mysqli_query($conn, 'SET character_set_connection=utf8');
+    mysqli_query($conn, 'SET character_set_client=utf8');
+    mysqli_query($conn, 'SET character_set_results=utf8');
+
+    $bd = mysqli_select_db($conn, 'heroku_7173119489dde05');
+    if (!$bd) {
+        die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
+    }
+
+    return $conn;
+} 
+ * switch ($i) {
+    case 0:
+        echo "i equals 0";
+        break;
+    case 1:
+        echo "i equals 1";
+        break;
+    case 2:
+        echo "i equals 2";
+        break;
+}
  * ALTER TABLE tabela_exemplo CHANGE id_exemplo novo_id_exemplo integer(5) unsigned;
 
  * 

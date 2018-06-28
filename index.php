@@ -1,6 +1,6 @@
 <?php
 include './FuncoesBDL.php';
-//include './mostra_erros.php';
+include './mostra_erros.php';
 $get = get();
 session_start();
 if (!(isset($_SESSION['login']) && isset($_SESSION['senha']))) {
@@ -122,28 +122,128 @@ and open the template in the editor.
                                  */
                                 $apostadores = getOrdenaUsuarioPorPontos();
                                 $posicao = 1;
-                                /*
-                                for ($a = 0; $a < getQuantLinhasTabela("apostadores"); $a++) {                                    
-                                    if ($apostadores[$a]['pontos'] == $apostadores[$a-1]['pontos']) {
-                                        
-                                    }
+                                $posicaoDoPrimeiro = 0;
+                                $primeiroCarasDoMesmoPontos = [];
+                                $ultimoCarasDoMesmoPontos = [];
+                                $rodarNovamente = 0;
+                                $primeiro = 0;
+                                $ultimo = 0;
+                                $liberarOrganizar = 0;
+                                $apostadoresComMesmaPontucao = [];
+                                $bacupsApostadores = [];
+                                //Descobrir se há ao menos duas pessoas com a mesma pontuação
+                                for ($a = 0; $a < getQuantLinhasTabela("apostadores"); $a++) {
+                                    if ($a > 0) {
+                                        if ($apostadores[$a]['pontos'] == $apostadores[$a - 1]['pontos'] && $rodarNovamente == 0) {
+                                            $primeiroCarasDoMesmoPontos[0] = $apostadores[$a - 1];
+                                            $primeiro = $a - 1;
+                                            $rodarNovamente = 1;
+                                        }
+                                        if ($primeiroCarasDoMesmoPontos[0]['pontos'] == $apostadores[$a]['pontos'] && $rodarNovamente == 1) {
+                                            $ultimoCarasDoMesmoPontos[0] = $apostadores[$a];
+                                            $ultimo = $a;
+                                        }
+                                        if (!($apostadores[$a]['pontos'] == $apostadores[$a - 1]['pontos']) && $rodarNovamente == 1) {
+                                            $rodarNovamente = 0;
+                                            $liberarOrganizar = 1;
+                                        }
+                                        if ($liberarOrganizar == 1) {
+                                            for ($e = $primeiro; $e <= $ultimo; $e++) {
+                                                $golsDosCapitaes = getGols($apostadores[$e]['capitao']);
+                                                $golsDosCapitaes = $golsDosCapitaes + getGols($apostadores[$e]['capitao2']);
+                                                $golsDosCapitaes = $golsDosCapitaes + getGols($apostadores[$e]['capitao3']);
+                                                $golsDosCapitaes = $golsDosCapitaes + getGols($apostadores[$e]['capitao4']);
+
+                                                $apostadores[$e]['desempate'] = $golsDosCapitaes;
+                                                $apostadoresComMesmaPontucao[$e] = $apostadores[$e];
+                                            }
+                                            for ($z = $primeiro; $z <= $ultimo; $z++) {
+                                                $bacupsApostadores[$z] = $apostadoresComMesmaPontucao[$z];
+                                            }   
+                                            //Botar em hordem decrecente os dados
+                                            $apostadorMaior;
+                                            $zerarDesempate;
+
+                                            for ($u = $primeiro; $u <= $ultimo; $u++) {
+                                                //print count($bacupsApostadores)." ";
+                                                $maior = 1000;
+                                                for ($b = $primeiro; $b <= $ultimo; $b++) {
+
+                                                    if ($apostadoresComMesmaPontucao[$b]['desempate'] < $maior) {
+                                                        $maior = $apostadoresComMesmaPontucao[$b]['desempate'];
+                                                        $apostadorMaior[$u] = $apostadoresComMesmaPontucao[$b];
+                                                        $zerarDesempate = $b;
+                                                    }
+                                                }
+                                                for ($c = $primeiro; $c <= $ultimo; $c++) {
+                                                    if ($c == $zerarDesempate) {
+                                                        $apostadoresComMesmaPontucao[$c]['desempate'] = 2000;
+                                                    }
+                                                }
+                                            }
+                                            //Botar em ordem crecente
+                                            $contador2 = $primeiro;
+                                            for ($f = $ultimo; $f >= $primeiro; $f--) {
+                                                $apostadoresComMesmaPontucao[$contador2] = $apostadorMaior[$f];
+                                                $contador2++;
+                                            }
+                                            /*
+                                            for ($d = $primeiro; $d <= $ultimo; $d++) {
+                                                //print $d;
+                                                print $apostadoresComMesmaPontucao[$d]['nome']."<br>";
+                                            }
+                                             * 
+                                             */
+                                            //print_r($apostadorMaior);
+                                            
+                                            //include './OrdenandoArray.php';
+                                            
+                                            //print $primeiro." ".$ultimo;
+                                            //$apostadoresComMesmaPontucao = getOrdenaUsuarioPorPontos2($apostadoresComMesmaPontucao);
+                                            
+                                            
+                                            for ($o = $primeiro; $o <= $ultimo; $o++) {
+                                                $apostadores[$o] = $apostadoresComMesmaPontucao[$o];                                           
+                                            }
+                                            
+                                             
+                                             
+                                            
+                                             
+                                        }
+                                    }    
+
                                 }
-                                 * 
-                                 */
+
+                                //print_r($apostadoresComMesmaPontucao);
+                                //Armasenar em um array os apostador com os mesmos pontos   
                                 for ($i = 0; $i < getQuantLinhasTabela("apostadores"); $i++) {
                                     $_SESSION['id'] = $apostadores[$i]['id'];
                                     print "";
-                                    print "<tr>";
-                                    print "<td>" . ($posicao) . "</td>";
+                                    print "<tr>";  
+                                    if (($apostadores[$i]['pontos'] == $apostadores[$i-1]['pontos']) && ($apostadores[$i]['desempate'] == $apostadores[$i-1]['desempate'])) {
+                                        print "<td></td>";
+                                    }  else {
+                                        print "<td>" . ($posicao) . "</td>";
+                                    }                                                                                                         
                                     print "<td><a class='letrasBrancas' href='Apostador.php?id=" . $apostadores[$i]['id'] . "'>" . $apostadores[$i]['nome'] . "</a></td>";
                                     print "<td class='letrasLaranja'>" . $apostadores[$i]['pontos'] . "</td>";
-                                    print "</a>";
-                                    $posicao++;
+                                    if ($apostadores[$i]['desempate'] > (-1)) {
+                                        print "<td class='capitao'>" . $apostadores[$i]['desempate'] . "</td>";
+                                    }                                    
+                                    print "</a>"; 
+                                    if (($apostadores[$i]['pontos'] == $apostadores[$i+1]['pontos']) && ($apostadores[$i]['desempate'] == $apostadores[$i+1]['desempate'])) {
+                                     
+                                    }  else {
+                                        $posicao++;
+                                    }
+                                    
+                                    
                                 }
                                 ?>
                             </table>
                         </div>
-                        <div class="col-md-3"></div>
+                        <div class="col-md-3 "></div>
                     </div>
 
                 </div>    
@@ -166,7 +266,7 @@ and open the template in the editor.
                             /*
                              * Este FOR rodará de acordo a quantidade de jogadpres que ouver na tabela do banco de dados
                              * para a exibição dos jogadores e a sua quantidade de gols.
-                             */
+                             
                             $jogadores = getOrdenaJogadorPorGols();
                             for ($i = 0; $i < getQuantLinhasTabela("jogadores"); $i++) {
                                 print "<tr>";
@@ -176,6 +276,8 @@ and open the template in the editor.
 
                                 print "</tr>";
                             }
+                             * 
+                             */
                             ?>
 
                         </table>

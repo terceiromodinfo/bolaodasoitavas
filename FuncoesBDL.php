@@ -442,6 +442,21 @@ function get() {
 /**
  * Ordena em forma decrescente todos os usuarios por pontos 
  */
+function getOrdenaUsuarioPorPontos2($array) {
+
+    function cmpj($a, $b) {
+        return $a["desempate"] < $b["desempate"];
+    }
+
+    if (getQuantLinhasTabela("apostadores") > 1) {
+        usort($array, 'cmpj');
+    }
+    return $array;
+}
+
+/**
+ * Ordena em forma decrescente todos os usuarios por pontos 
+ */
 function getOrdenaUsuarioPorPontos() {
     $apostadores = getInfoTabela("apostadores");
 

@@ -53,6 +53,8 @@ $jogadores = getInfoTabela("jogadores");
                     <td><?php print $apostador[$i]['joDeSexto'] ?></td>
                     <td><?php print $apostador[$i]['capitao'] ?></td>
                     <td><?php print $apostador[$i]['capitao2'] ?></td>
+                    <td><?php print $apostador[$i]['capitao3'] ?></td>
+                    <td><?php print $apostador[$i]['capitao4'] ?></td>
                 </tr>
                 <?php
             }

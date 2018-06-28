@@ -333,7 +333,7 @@ if (isset($get['liberarJogador'])) {
     $id = $_SESSION['id'];
     $nome = getInfoLinha("apostadores", $id)[$nomeColuna];
     $nomeCapitao = getInfoLinha("apostadores", $id);
-    if (($nome == $nomeCapitao['capitao']) || ($nome == $nomeCapitao['capitao2'])) {
+    if (($nome == $nomeCapitao['capitao']) || ($nome == $nomeCapitao['capitao2'])  || ($nome == $nomeCapitao['capitao3'])  || ($nome == $nomeCapitao['capitao4'])) {
         nullCapitao2($id, $nome);       
     }    
     $tabela2 = $_SESSION["apostadores"];    

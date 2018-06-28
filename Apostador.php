@@ -105,9 +105,9 @@ if (get()['id']) {
                     <div class="col-md-3">
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 ">
                         <?php
-                        print "<h3 class='letraswhite'>" . $apostador[0]["nome"] . "</h3>";
+                        print "<h3 class='letrasLaranja letraswhite'>" . $apostador[0]["nome"] . "</h3>";
                         ?>
                         <form method="POST" action="LogicasPrincipal.php">
                             <table class="tabelas table table-hover">
