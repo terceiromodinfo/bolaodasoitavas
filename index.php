@@ -232,11 +232,9 @@ and open the template in the editor.
                                         print "<td class='capitao'>" . $apostadores[$i]['desempate'] . "</td>";
                                     }                                    
                                     print "</a>"; 
-                                    if (($apostadores[$i]['pontos'] == $apostadores[$i+1]['pontos']) && ($apostadores[$i]['desempate'] == $apostadores[$i+1]['desempate'])) {
-                                     
-                                    }  else {
+                                    
                                         $posicao++;
-                                    }
+                                    
                                     
                                     
                                 }
@@ -266,18 +264,20 @@ and open the template in the editor.
                             /*
                              * Este FOR rodará de acordo a quantidade de jogadpres que ouver na tabela do banco de dados
                              * para a exibição dos jogadores e a sua quantidade de gols.
-                             
+                             * 
+                             */
                             $jogadores = getOrdenaJogadorPorGols();
                             for ($i = 0; $i < getQuantLinhasTabela("jogadores"); $i++) {
-                                print "<tr>";
+                                if ($jogadores[$i]["gols"] > 0) {
+                                    print "<tr>";
 
                                 print "<td>" . $jogadores[$i]["nome"] . "</td>";
                                 print "<td>" . $jogadores[$i]["gols"] . "</td>";
 
                                 print "</tr>";
+                                }                                
                             }
-                             * 
-                             */
+                             
                             ?>
 
                         </table>

@@ -35,7 +35,7 @@ function getConnection() {
     }
 
     return $conn;
-} 
+}  
 //mysql://:@/?reconnect=true
 /**
  * Buscar registros nas tabelas
