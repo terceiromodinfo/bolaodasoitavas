@@ -77,7 +77,7 @@ and open the template in the editor.
                             if (!(isset($_SESSION['login']) && isset($_SESSION['senha']))) {
                         ?>
                         <li>
-                            <a class="btn butaoLogar letraswhite" href="login.php?abrirDados=sim">Admin</a>
+                            <a class="btn butaoLogar letraswhite" href="login.php">Admin</a>
                         </li>
                         <?php
                             }
