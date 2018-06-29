@@ -104,7 +104,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                     <input class="form-control" type="text" name="nome" placeholder="Seu nome"><br>
                                     <input class="form-control" type="text" name="time" placeholder="Time campeão"><br> 
                                     <div class="col-md-6">
-                                        <h5>1° Grupo A</h5>
+                                        <h5>Uruguai</h5>
                                         <select class="form-control" name="primeiro">
                                             <option></option>
                                             <?php
@@ -120,7 +120,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                     </div>
 
                                     <div class="col-md-6">
-                                        <h5>2° Grupo B</h5>
+                                        <h5>Portugal</h5>
                                         <select name="segundo" class="form-control">
                                             <option></option>
                                             <?php
@@ -133,7 +133,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div> 
                                     <div class="col-md-6">
-                                        <h5>1° Grupo B</h5>
+                                        <h5>Espanha</h5>
                                         <select name="terceiro" class="form-control">
                                             <option></option>
                                             <?php
@@ -146,7 +146,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select >
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>2° Grupo A</h5>
+                                        <h5>Rússia</h5>
                                         <select name="quarto" class="form-control">
                                             <option></option>
                                             <?php
@@ -159,7 +159,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>1° Grupo C</h5>
+                                        <h5>França</h5>
                                         <select name="quinto" class="form-control">
                                             <option></option>
                                             <?php
@@ -172,7 +172,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>2° Grupo D</h5>
+                                        <h5>Argentina</h5>
                                         <select name="sexto" class="form-control">
                                             <option></option>
                                             <?php
@@ -185,7 +185,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>1° Grupo D</h5>
+                                        <h5>Croácia</h5>
                                         <select name="setimo" class="form-control">
                                             <option></option>
                                             <?php
@@ -198,7 +198,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>                             
                                     <div class="col-md-6">
-                                        <h5>2° Grupo C</h5>
+                                        <h5>Dinamarca</h5>
                                         <select name="oitavo" class="form-control">
                                             <option></option>
                                             <?php
@@ -211,7 +211,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>1° Grupo E</h5>
+                                        <h5>Brasil</h5>
                                         <select name="nono" class="form-control">
                                             <option></option>
                                             <?php
@@ -224,7 +224,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>2° Grupo F</h5>
+                                        <h5>México</h5>
                                         <select name="decimo" class="form-control">
                                             <option></option>
                                             <?php
@@ -237,7 +237,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>1° Grupo F</h5>
+                                        <h5>Suécia</h5>
                                         <select name="dePrimeiro" class="form-control">
                                             <option></option>
                                             <?php
@@ -250,7 +250,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>2° Grupo E</h5>
+                                        <h5>Suíça</h5>
                                         <select name="deSegundo" class="form-control">
                                             <option></option>
                                             <?php
@@ -263,7 +263,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>1° Grupo G</h5>
+                                        <h5>Bélgica</h5>
                                         <select name="deTerceiro" class="form-control">
                                             <option></option>
                                             <?php
@@ -276,7 +276,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>2° Grupo H</h5>
+                                        <h5>Japão</h5>
                                         <select name="deQuarto" class="form-control">
                                             <option></option>
                                             <?php
@@ -289,7 +289,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>1° Grupo H</h5>
+                                        <h5>Colômbia</h5>
                                         <select name="deQuinto" class="form-control">
                                             <option></option>
                                             <?php
@@ -302,7 +302,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <h5>2° Grupo G</h5>
+                                        <h5>Inglaterra</h5>
                                         <select name="deSexto" class="form-control">
                                             <option></option>
                                             <?php
