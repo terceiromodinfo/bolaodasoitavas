@@ -35,7 +35,7 @@ function getConnection() {
     }
 
     return $conn;
-}  
+}
 //mysql://:@/?reconnect=true
 /**
  * Buscar registros nas tabelas
@@ -107,6 +107,7 @@ function getIdAbrir($tabela) {
  * Retorna todos os dados de uma tabela 
  */
 function getInfoTabelaAbrir($tabela) {
+    /*
         $idUsuario = getIdAbrir($tabela);
         for ($giros = 0; $giros < count($idUsuario); $giros++) {
 
@@ -118,6 +119,17 @@ function getInfoTabelaAbrir($tabela) {
         }
 
         return $ResultFinal;
+     * 
+     */
+    $sql = "SELECT * FROM ".$tabela."";
+    $resPesquisaId = buscaRegistro($sql);
+
+    $contador = 0;
+    while ($registro = mysqli_fetch_assoc($resPesquisaId)) {
+        $idUsuario[$contador] = $registro;
+        $contador = $contador + 1;
+    }
+    return $idUsuario;
 }
 
 function abrirDados() {
